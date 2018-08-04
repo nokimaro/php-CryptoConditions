@@ -3,7 +3,7 @@
 > this is derived from:
 > [BigChainDB js-crypto-conditions](https://github.com/bigchaindb/js-crypto-conditions)
 > which is forked from
-> [interledgerjs five-bells-condition] (https://github.com/interledgerjs/five-bells-condition)
+> [interledgerjs five-bells-condition](https://github.com/interledgerjs/five-bells-condition)
 
 
 
