@@ -6,9 +6,10 @@
  * and open the template in the editor.
  */
 
-namespace KryuuCommon\CryptoConditions;
+namespace KryuuCommon\CryptoConditions\Lib;
 
-use KryuuCommon\Exception\TypeException;
+use KryuuCommon\CryptoConditions\Exception\TypeException;
+use KryuuCommon\Buffer\Buffer;
 use Exception;
 
 /**
@@ -28,10 +29,11 @@ class Fulfillment {
     static public function fromUri($serializedFulfillment) {
         if ($serializedFulfillment instanceof Fulfillment) {
             return $serializedFulfillment;
-        } else if (is_string($serializedFulfillment)) {
+        } else if (!is_string($serializedFulfillment)) {
             throw new TypeException('Serialized fulfillment must be a string');
         }
-        $fulfillment = Fulfillment::fromBinary(Buffer . from(serializedFulfillment, 'base64'));
+        $buffer = new Buffer();
+        $fulfillment = Fulfillment::fromBinary($buffer->from($serializedFulfillment, 'base64'));
 
         return $fulfillment;
     }
@@ -46,8 +48,8 @@ class Fulfillment {
      * @return {Fulfillment} Resulting object
      */
     static public function fromBinary($data) {
-        $fulfillmentJson = Asn1Fulfillment . decode(data);
-        return Fulfillment . fromAsn1Json(fulfillmentJson);
+        $fulfillmentJson = Asn1Fulfillment::decode(data);
+        return Fulfillment::fromAsn1Json(fulfillmentJson);
     }
 
     static public function fromAsn1Json($json) {
