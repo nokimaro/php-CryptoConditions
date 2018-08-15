@@ -18,5 +18,10 @@
         "psr-4": {
             "KryuuCommon\\CryptoConditions\\": "src/"
         }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "KryuuCommon\\CryptoConditionsTest\\":   "test/"
+        }
     }
 }
