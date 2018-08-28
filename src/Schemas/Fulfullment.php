@@ -13,6 +13,7 @@ use ASN1\Type\Primitive\OctetString;
 use ASN1\Type\Primitive\Integer;
 use ASN1\Type\Tagged\ExplicitlyTaggedType;
 use ASN1\Type\Tagged\ImplicitlyTaggedType;
+use ASN1\Type\Constructed\Set;
 
 
 /**
@@ -33,11 +34,57 @@ class Fulfullment {
         );
     }
     
+    /**
+     * 
+     * @return Sequence
+     */
     public function prefixFulfillment() {
         return new Sequence(
             new ImplicitlyTaggedType(0, new OctetString()),
             new ImplicitlyTaggedType(1, new Integer()),
             new ExplicitlyTaggedType(2, $this->preImageFulfillment())
         );
+    }
+    
+    /**
+     * 
+     * @return Sequence
+     */
+    public function thresholdFulfillment() {
+        return new Sequence(
+            new ImplicitlyTaggedType(0, new Set($this->fulfillment())),
+            new ImplicitlyTaggedType(1, new Set(Condition))
+                
+        );
+    }
+    
+    /**
+     * 
+     * @return Sequence
+     */
+    public function RsaSha256Fulfillment() {
+        return new Sequence(
+            new ImplicitlyTaggedType(0, new OctetString),
+            new ImplicitlyTaggedType(1, new OctetString)
+        );
+    }
+    
+    /**
+     * 
+     * @return Sequence
+     */
+    public function Ed25519Sha256Fulfillment() {
+        return new Sequence(
+            new ImplicitlyTaggedType(0, new OctetString),
+            new ImplicitlyTaggedType(1, new OctetString)
+        );
+    }
+    
+    public function fullfillment() {
+        
+    }
+    
+    private function choice() {
+        
     }
 }
