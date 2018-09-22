@@ -2,7 +2,26 @@
     "name": "kryuu-common/crypto-conditions",
     "description": "Base58 Encoding and Decoding Library for PHP",
     "repositories": [ 
-        { "type": "composer", "url": "https://composer.git.ryuu.technology/packages/php/" }
+            {
+            "type": "vcs",
+            "url": "https://github.com/nokimaro/php-Base58"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/nokimaro/php-CryptoConditions"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/nokimaro/php-Buffer"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/nokimaro/php-JsonStableStringify"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/nokimaro/php-BigChainDB"
+        }        
     ],
     "minimum-stability": "dev",
     "prefer-stable": true,
